@@ -20,11 +20,7 @@ export class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.page !== this.state.page) {
-      this.fetchImages();
-    }
-    if (prevState.value !== this.state.value) {
-      this.setState({ page: 1, images: [] });
+    if (prevState.page !== this.state.page || prevState.value !== this.state.value) {
       this.fetchImages();
     }
   }
@@ -47,6 +43,7 @@ export class App extends Component {
   };
 
   onSearchPictures = value => {
+    this.setState({ page: 1, images: [] });
     const normalizedValue = value.toLowerCase().trim();
     this.setState({ value: normalizedValue });
   };

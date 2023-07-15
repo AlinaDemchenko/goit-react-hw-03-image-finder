@@ -9,6 +9,11 @@ class Modal extends Component {
     }
   };
 
+  handlerOnClick = event => {
+    if (event.target === event.currentTarget){
+    this.props.onClose();}
+  }
+
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
@@ -20,9 +25,7 @@ class Modal extends Component {
   render() {
     return (
       <StyledOverlay
-        onClick={() => {
-          this.props.onClose();
-        }}
+        onClick={this.handlerOnClick}
       >
         <StyledModal>
           <img

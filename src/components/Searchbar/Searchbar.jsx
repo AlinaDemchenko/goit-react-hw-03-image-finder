@@ -1,16 +1,14 @@
 import { StyledSearchbar } from './Searchbar.styled';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 
-class Searchbar extends Component {
-  handlerSubmit = evt => {
+const Searchbar = ({onSearchPictures}) => {
+  const handlerSubmit = evt => {
     evt.preventDefault();
-    this.props.onSearchPictures(evt.target.elements.search.value);
+   onSearchPictures(evt.target.elements.search.value);
   };
-  render() {
     return (
       <StyledSearchbar>
-        <form onSubmit={this.handlerSubmit}>
+        <form onSubmit={handlerSubmit}>
           <button type="submit">
             <span>Search</span>
           </button>
@@ -25,7 +23,6 @@ class Searchbar extends Component {
       </StyledSearchbar>
     );
   }
-}
 
 Searchbar.propTypes = {
   onSearchPictures: PropTypes.func.isRequired,
